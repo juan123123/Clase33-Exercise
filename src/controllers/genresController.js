@@ -4,10 +4,12 @@ const sequelize = db.sequelize;
 
 const genresController = {
     'list': (req, res) => {
-        db.Genre.findAll()
+        db.Genre.findAll({
+          include: [{association: 'movies'}]
+        })
             .then(genres => {
                 res.render('genresList.ejs', {genres})
-            })
+            }).catch(err => console.log(err))
     },
     'detail': (req, res) => {
         db.Genre.findByPk(req.params.id)

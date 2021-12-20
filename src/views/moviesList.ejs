@@ -23,9 +23,23 @@
     <br>
     <ul>
         <% for( let i = 0; i < movies.length; i++ ) { %>
-        <li>
+          <li>
             <a href="/movies/detail/<%= movies[i].id %>"><%= movies[i].title %></a>
-        </li>
+          </li>
+          <% if(movies[i].genres){ %>
+            <p>Genre: <%=movies[i].genres.name %> </p>
+          <% } %>
+          <p>Actors:</p>
+          <ul>
+            <% for (let j = 0; j < movies[i].actors.length; j++) {%>
+              
+                <li>
+                  <%= movies[i].actors[j].first_name %>
+                  <%= movies[i].actors[j].last_name %>
+                </li>
+              
+            <%} %>
+          </ul>
         <% } %>
 
     </ul>

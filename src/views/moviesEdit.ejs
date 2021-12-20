@@ -29,7 +29,9 @@
             <p>
                 <select name="genre_id" id="" required>
                     <% allGenres.forEach(genre => { %>
-                    <option value="<%= genre.id %>" <% if (Movie.genre.id == genre.id) { %><%= 'selected' %><% }; %>><%= genre.name %></option>
+                      <option value="<%= genre.id %>" <% if (Movie.dataValues.genre_id === genre.dataValues.id) {  
+                          %> <%= 'selected' %><% }; %>><%= genre.dataValues.name %><%= %>
+                      </option>
                     <% }); %>
                 </select>
             </p>
@@ -41,7 +43,6 @@
             
             <br>
             <p> <button class="botonAgregar" type="submit">Actualizar</button>
-        
             <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
         </form>
     </section>
